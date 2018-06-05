@@ -1,0 +1,33 @@
+{
+	"name": "RNAYInstalment",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"start": "node node_modules/react-native/local-cli/cli.js start",
+		"test": "jest"
+	},
+	"dependencies": {
+		"lodash": "^4.17.10",
+		"query-string": "^6.1.0",
+		"react": "16.0.0-alpha.6",
+		"react-native": "0.44.0",
+		"react-native-easy-toast": "^1.1.0",
+		"react-native-gesture-handler": "^1.0.3",
+		"react-native-loading-spinner-overlay": "^0.3.0",
+		"react-native-picker": "^4.3.7",
+		"react-native-scrollable-tab-view": "^0.8.0",
+		"react-native-simple-picker": "^2.1.0",
+		"react-native-storage": "^0.2.2",
+		"react-native-tab-navigator": "^0.3.4",
+		"react-native-tab-view": "^0.0.78"
+	},
+	"devDependencies": {
+		"babel-jest": "23.0.1",
+		"babel-preset-react-native": "4.0.0",
+		"jest": "23.0.1",
+		"react-test-renderer": "16.0.0-alpha.6"
+	},
+	"jest": {
+		"preset": "react-native"
+	}
+}
