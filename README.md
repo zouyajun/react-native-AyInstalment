@@ -49,4 +49,4 @@
 ### 效果图： 
 
 如果对您有帮助，您可以点右上角 "Star" 支持一下 谢谢！ ^_^
-![](https://github.com/zouyajun/react-native-AyInstalment/blob/master/app/images/%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE.jpg)
+![](https://github.com/zouyajun/react-native-AyInstalment/blob/master/app/images/projectShot.jpg)
