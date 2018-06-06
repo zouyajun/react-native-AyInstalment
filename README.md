@@ -18,7 +18,7 @@
 分期列表详情模块
 个人中心模块
 ```
-### 项目文件目录结构
+### 项目文件目录结构：
 ```
 稍后更新...
 ```
@@ -46,7 +46,7 @@
  > 服务器token失效，需要退出重新登录即可
  
  
-### 效果图 
+### 效果图： 
 
 如果对您有帮助，您可以点右上角 "Star" 支持一下 谢谢！ ^_^
 ![](https://github.com/zouyajun/react-native-AyInstalment/blob/master/app/images/%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE.jpg)
