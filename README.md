@@ -1,6 +1,12 @@
 # react-native-AyInstalment
 基于React-Native 完成的简单金融分期项目
 
+
+### 项目下载安装：
+1. 目前只支持iOS平台，稍后适配android平台
+2. 下载：git clone [https://github.com/zouyajun/react-native-AyInstalment.git](https://github.com/zouyajun/react-native-AyInstalment.git)
+3. 安装：cd react-native-AyInstalmen  --> npm install --> react-native run-ios(run-android)
+
 ### 项目基础模块如下：
 ```
 支持下拉刷新和上拖加载更多
@@ -11,7 +17,10 @@
 分期列表详情模块
 个人中心模块
 ```
-
+### 项目文件目录结构
+```
+稍后更新...
+```
 ### 依赖组件：
 ```
 "dependencies": {
