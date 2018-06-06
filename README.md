@@ -14,6 +14,7 @@
 ```
 
 
-### 
+# 
 效果图
+
 ![](https://github.com/zouyajun/react-native-AyInstalment/blob/master/app/images/%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE.jpg)
