@@ -46,7 +46,11 @@
  > 服务器token失效，需要退出重新登录即可
  
  
-### 效果图： 
+### 部分页面截图： 
 
 如果对您有帮助，您可以点右上角 "Star" 支持一下 谢谢！ ^_^
 ![](https://github.com/zouyajun/react-native-AyInstalment/blob/master/app/images/projectShot.jpg)
+
+### 效果图：
+
+![](https://github.com/zouyajun/react-native-AyInstalment/blob/master/app/images/projectGif.gif)
