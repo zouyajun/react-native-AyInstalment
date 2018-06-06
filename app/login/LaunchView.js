@@ -29,7 +29,9 @@ export default class LaunchView extends Component {
         that = this
     }
     componentDidMount() {
-        console.log(this.props.navigator)
+        /**
+         *  延时加载（异步读取本地数据）
+         */
         setTimeout(this._openApp,1500)
     }
     render() {
@@ -46,27 +48,48 @@ export default class LaunchView extends Component {
      */
     _openApp() {
         storage.load({
-            key: 'FirstLogin'
+            key: 'FirstLogin',
+            id: 1002
         }).then((data) => {
-            if (data.isFirst == 'false') {
+            console.log('isFirstFlag',data)
+            /** 获取用户是否登录 */
+            storage.load({
+                key: 'loginState',
+                id: 1001
+            }).then(() => {
+                /** 登录过，直接加载首页 */
                 that.props.navigator.replace({
                     component: Navigator
                 })
-            }
-        }).catch((error) => {
-            storage.save({
-                key: 'FirstLogin',
-                id: 1002,
-                data: {
-                    isFirst: 'false'
-                },
-            }).then(() => {
+            }).catch((error) => {
+                console.log(error)
+                /** 未登录过，加载登录页面 */
                 that.props.navigator.replace({
                     component: Login
                 })
-            }).catch((error) => {
-                console.log('error',error)
             })
+        }).catch((error) => {
+            console.log('开启奇幻之旅吧')
+            that._saveFirstFlag()
+        })
+    }
+    /**
+     *  本地存储第一次打开app标识
+     */
+    _saveFirstFlag = () => {
+        storage.save({
+            key: 'FirstLogin',
+            id: 1002,
+            data: {
+                isFirst: 'false'
+            },
+        }).then(() => {
+            that.props.navigator.replace({
+                component: Guide
+            })
+
+        }).catch((error) => {
+            console.log('error',error)
         })
     }
 }

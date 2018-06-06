@@ -160,12 +160,13 @@ export default class ApplyAllItem extends Component {
      */
     _loadStorageData() {
         storage.load({
-            key:'loginState'
+            key:'loginState',
+            id: 1001
         }).then((data) => {
             loginData = data
             that._fetchData(1)
         }).catch((error) => {
-
+            console.log(error)
         })
     }
     /**

@@ -143,7 +143,8 @@ export default class HomeBottomList extends Component {
      */
     _loadStorageData() {
         storage.load({
-            key:'loginState'
+            key:'loginState',
+            id: 1001
         }).then((data) => {
             console.log('读取数据成功',data)
             that._fetchMoreData(data)

@@ -97,7 +97,8 @@ export default class ProduceDetail extends Component {
      */
     _loadStorageData() {
         storage.load({
-            key:'loginState'
+            key:'loginState',
+            id: 1001
         }).then((data) => {
             that._fetchProductDetail(data)
         }).catch((error) => {

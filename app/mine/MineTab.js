@@ -78,13 +78,14 @@ export default class MineTab extends Component {
                 {text:'取消',onPress: () => {
                 }},
                 {text:'确定',onPress: () => {
-                    /**
-                     *  !! 清空map，移除所有"key-id"数据（但会保留只有key的数据）
-                     */
-                    storage.clearMap()
-                    /**
-                     *  退出登录页面导航跳转（用一个新的路由替换掉当前的场景）
-                     */
+                    /**  !! 清空map，移除所有"key-id"数据（但会保留只有key的数据） */
+                    // storage.clearMap()
+                    /** 单个key清除 */
+                    storage.remove({
+                        key: 'loginState',
+                        id: 1001
+                    })
+                    /** 退出登录页面导航跳转（用一个新的路由替换掉当前的场景） */
                     that.props.navigator.replace({
                         component: Login
                     })
@@ -127,7 +128,8 @@ export default class MineTab extends Component {
      */
     _loadStorageData() {
         storage.load({
-            key:'loginState'
+            key:'loginState',
+            id: 1001
         }).then((data) => {
             that._fetchHospitalLimitData(data)
         }).catch((error) => {

@@ -194,6 +194,7 @@ export default class Login extends Component {
             //expires为有效时间(一天)
             expires: 24 * 3600 * 1000
         }).then(() => {
+            console.log('登录数据保存成功了')
             that.props.navigator.replace({
                 component: Navigator
             })

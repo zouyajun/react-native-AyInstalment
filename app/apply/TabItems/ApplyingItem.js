@@ -159,7 +159,8 @@ export default class ApplyingItem extends Component {
      */
     _loadStorageData() {
         storage.load({
-            key:'loginState'
+            key:'loginState',
+            id: 1001
         }).then((data) => {
             loginData = data
             that._fetchData(1)

@@ -105,7 +105,8 @@ export default class QrcScan extends Component {
      */
     _loadStorageData() {
         storage.load({
-            key:'loginState'
+            key:'loginState',
+            id: 1001
         }).then((data) => {
             that._fetchQRCImageUrl(data)
         }).catch((error) => {
