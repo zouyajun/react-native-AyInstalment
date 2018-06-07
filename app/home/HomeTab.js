@@ -16,6 +16,7 @@ import {
 } from 'react-native';
 
 import Picker from 'react-native-picker'
+import Swiper from 'react-native-swiper'
 
 import NavigationBar from '../common/NavBarCommon'
 import BottomList from './HomeBottomList'
@@ -32,7 +33,8 @@ export default class HomeTab extends Component {
         super(props)
         that = this
         this.state = {
-            selectedIndex: 0
+            selectedIndex: 0,
+            itemImages: [], // 轮播图图片数组
         }
     }
     componentDidMount() {
@@ -40,6 +42,15 @@ export default class HomeTab extends Component {
          *   获取登录之后设置的全局accessToken
          */
         console.log('全局变量accessToken:',global.accessToken)
+        var items = [
+            'http://clinicapi.qiezzitest.info/Images/QieZiJinRong_Home1_iOS.png',
+            'http://blogdailyherald.com/wp-content/uploads/2013/04/382065_560557460633306_930109857_n.jpg',
+            'http://img0.pclady.com.cn/pclady/pet/choice/cat/1701/6.jpg',
+            'https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/3812b31bb051f819dc048662dbb44aed2e73e7f1.jpg'
+        ]
+        this.setState({
+            itemImages: items
+        })
     }
     render() {
         return (
@@ -47,9 +58,8 @@ export default class HomeTab extends Component {
                 <NavigationBar
                     title='爱牙分期'/>
                 <ScrollView automaticallyAdjustContentInsets={false}>
-                    <Image
-                        source={{uri: 'http://clinicapi.qiezzitest.info/Images/QieZiJinRong_Home1_iOS.png'}}
-                        style={{resizeMode: 'cover',width: width,height: 140}}/>
+                    {/*轮播图*/}
+                    {this._renderSwiperItem()}
                     {this._renderSecondItem()}
                     <View style={styles.recommendTextStyle}>
                         <Text style={{fontSize: 16}}>推荐产品</Text>
@@ -62,6 +72,32 @@ export default class HomeTab extends Component {
 
             </View>
         );
+    }
+
+    /**
+     *   渲染轮播图组件
+     */
+    _renderSwiperItem() {
+        return (
+            <Swiper
+                autoplay = {true}
+                height = {160}
+                showsPagination = {true}
+                dotColor='rgba(0,0,0,.2)'
+                activeDotColor='#fff'
+                horizontal={true}>
+                {
+                    this.state.itemImages.map((item, index) => {
+                        //cover: 等比例放大; center:不变; contain:不变; stretch:填充;
+                        return <Image
+                                    source={{uri: item}}
+                                    style={{resizeMode: 'cover',width: width,height: 160}}
+                                    key={index}/>
+                    })
+                }
+
+            </Swiper>
+        )
     }
     /**
      *  渲染折扣信息组件

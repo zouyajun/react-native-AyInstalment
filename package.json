@@ -20,6 +20,7 @@
 		"react-native-scrollable-tab-view": "^0.8.0",
 		"react-native-simple-picker": "^2.1.0",
 		"react-native-storage": "^0.2.2",
+		"react-native-swiper": "^1.5.13",
 		"react-native-tab-navigator": "^0.3.4",
 		"react-native-tab-view": "^0.0.78"
 	},
