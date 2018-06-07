@@ -20,7 +20,7 @@
 ```
 ### 项目文件目录结构：
 ```
-稍后更新...
+![](https://github.com/zouyajun/react-native-AyInstalment/blob/master/app/images/projectTree.jpg)
 ```
 ### 依赖组件：
 ```
