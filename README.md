@@ -11,6 +11,8 @@
 ### 项目基础模块如下：
 ```
 支持下拉刷新和上拖加载更多
+首页轮播图
+图片多图预览
 支持顶部多级标签栏切换
 包含登录、退出、启动页、引导页面等
 首页分期模块
@@ -38,9 +40,10 @@
 		"react-native-scrollable-tab-view": "^0.8.0",
 		"react-native-simple-picker": "^2.1.0",
 		"react-native-storage": "^0.2.2",
+		"react-native-swiper": "^1.5.13",
 		"react-native-tab-navigator": "^0.3.4",
 		"react-native-tab-view": "^0.0.78"
-	},
+	}
 ```
 ### 安装运行出现问题：
  - 登录无法显示数据问题：
