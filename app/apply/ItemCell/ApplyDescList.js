@@ -8,15 +8,27 @@ import {
     StyleSheet,
     Text,
     View,
-    Dimensions
+    Dimensions,
+    Image,
+    Modal,
+    TouchableOpacity
 } from 'react-native';
 
+import ImageViewer from 'react-native-image-zoom-viewer'
 const {width,height} = Dimensions.get('window')
+var cols = 3
+var boxWidth = 100
+var vMargin = (width - cols * boxWidth) / (cols + 1)
+var hMargin = 15
+
 export default class ApplyDescList extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            dataArr: []
+            dataArr: [],
+            imagesArray: [],  // 图片数组
+            showImage: false, // 是否显示图片预览组件
+            selectedIndex: 0  // 点击预览图片索引
         }
     }
     componentDidMount() {
@@ -27,6 +39,33 @@ export default class ApplyDescList extends Component {
         return (
             <View style={styles.container}>
                 {this._renderAllInfoItems()}
+                {/*影像资料*/}
+                {
+                    this.state.imagesArray.length > 0
+                    ? <View style={styles.bottomContainerStyle}>
+                            <View style={styles.bottomTopStyle}>
+                                <Text style={styles.itemTextStyle}>医疗确认照</Text>
+                            </View>
+                            <View style={styles.bottomImageItemStyle}>
+                                {this._renderAllImageItems()}
+                            </View>
+                        </View>
+                    : null
+                }
+                {/*是否显示图片预览*/}
+                {
+                    this.state.showImage
+                    ? <Modal visible={true} transparent={true}>
+                            <ImageViewer
+                                imageUrls={this.state.imagesArray}
+                                index = {this.state.selectedIndex}
+                                onClick={() =>{
+                                    this.setState({
+                                        showImage: false
+                                    })
+                                }}/>
+                        </Modal> : null
+                }
             </View>
         );
     }
@@ -46,6 +85,34 @@ export default class ApplyDescList extends Component {
             )
         })
         return itemArr
+    }
+    /**
+     *   图片九宫格布局
+     */
+    _renderAllImageItems() {
+        var allItems = []
+        var imagesArr = this.state.imagesArray
+        imagesArr.forEach((item,idx) => {
+            allItems.push(
+                <TouchableOpacity onPress={() => this._showImageViewer(idx)} key={idx}>
+                    <View style={styles.autoViewStyle}>
+                        <Image
+                            source={{uri: item.url}}
+                            style={styles.imageStyle}/>
+                    </View>
+                </TouchableOpacity>
+            )
+        })
+        return allItems
+    }
+    /**
+     *   显示调用图片预览组件
+     */
+    _showImageViewer(index) {
+       this.setState({
+           selectedIndex: index,
+           showImage: true
+       })
     }
     /**
      *  处理数据
@@ -110,7 +177,18 @@ export default class ApplyDescList extends Component {
         dataArr.push(applysArr)
         dataArr.push(loanArr)
         dataArr.push(plansArr)
-        this.setState({dataArr})
+        /** 处理图片数组 */
+        var modelImages = data.Image
+        var imagesArr = []
+        modelImages.forEach((item,idx) => {
+            imagesArr.push({
+                url: item.ImgUrl
+            })
+        })
+        this.setState({
+            dataArr: dataArr,
+            imagesArray: imagesArr
+        })
     }
 }
 
@@ -179,13 +257,43 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         justifyContent: 'space-between',
         paddingVertical: 5
-
-
     },
     infoTextStyle: {
         fontSize: 13,
         color: '#999',
         width: (width - 30) / 3,
         textAlign: 'center'
+    },
+    autoViewStyle: {
+        backgroundColor: '#999',
+        alignItems: 'center',
+        width: boxWidth,
+        height: boxWidth,
+        marginLeft: vMargin,
+        marginTop: hMargin
+    },
+    imageStyle: {
+        width: boxWidth,
+        height: boxWidth,
+        resizeMode: 'cover'
+    },
+    bottomContainerStyle: {
+        backgroundColor: '#fff',
+        marginVertical: 10
+    },
+    bottomTopStyle: {
+        borderBottomWidth: 1,
+        borderBottomColor: '#dbdbdb'
+    },
+    bottomImageItemStyle: {
+        backgroundColor: '#f4f7fe',
+        flexDirection: 'row',
+        flexWrap: 'wrap'
+    },
+    itemTextStyle: {
+        fontSize: 16,
+        color: '#666',
+        paddingVertical: 10,
+        paddingLeft: 15
     }
 });

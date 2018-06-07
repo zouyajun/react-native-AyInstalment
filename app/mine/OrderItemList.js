@@ -36,14 +36,16 @@ export default class OrderItemList extends Component {
     /**
      *  跳转分期详情页面
      */
-    _pushNav(orderId) {
-        this.props.navigator.push({
-            component: ApplyDetail,
-            title: '',
-            params: {
-                orderId: orderId
-            }
-        })
+    _pushNav(orderId,rowData) {
+        alert('去列表跳跳看噢')
+        // this.props.navigator.push({
+        //     component: ApplyDetail,
+        //     title:'',
+        //     params: {
+        //         orderId:orderId,
+        //         rowData: rowData
+        //     }
+        // })
     }
     render() {
         return (
@@ -92,7 +94,7 @@ export default class OrderItemList extends Component {
     _renderItem = ({item}) => {
         var formateDate = item.AddTime.split('T')[0]
         return (
-            <TouchableOpacity onPress={() =>this._pushNav(item.OrderId)}>
+            <TouchableOpacity onPress={() =>this._pushNav(item.OrderId,item)}>
                 <View style={styles.itemContainerStyle}>
                     <View style={styles.topViewStyle}>
                         <Text style={styles.topLeftTextStyle}>{item.ProductName}</Text>
